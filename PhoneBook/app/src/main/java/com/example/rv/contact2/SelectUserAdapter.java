@@ -88,7 +88,7 @@ class SelectUserAdapter extends BaseAdapter{
                 v.imageView.setImageBitmap(data.getThumb());
 
             } else {
-                v.imageView.setImageResource(R.drawable.link);
+                v.imageView.setImageResource(R.drawable.bgr);
                            }
             // Seting round image
            // Bitmap bm = BitmapFactory.decodeResource(view.getResources(), R.drawable.link);
@@ -102,7 +102,7 @@ class SelectUserAdapter extends BaseAdapter{
             //v.imageView.setImageDrawable(roundedImage);
         } catch (OutOfMemoryError e) {
             // Add default picture
-            v.imageView.setImageDrawable(this._c.getDrawable(R.drawable.link));
+            v.imageView.setImageDrawable(this._c.getDrawable(R.drawable.bgr));
             e.printStackTrace();
         }
 
@@ -122,7 +122,7 @@ class SelectUserAdapter extends BaseAdapter{
         } else {
             for (SelectUser wp : arraylist) {
                 if (wp.getName().toLowerCase(Locale.getDefault())
-                        .contains(charText)) {
+                        .startsWith(charText) || wp.getPhone().startsWith(charText)) {
                     _data.add(wp);
                 }
             }
